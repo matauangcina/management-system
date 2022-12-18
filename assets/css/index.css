@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: rgba(0, 0, 0, 0.8);
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+.content {
+    padding: 50px;
+    width: 600px;
+    height: 95%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #232323;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+h1 {
+    text-transform: uppercase;
+}
+.error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+.input-field {
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+    margin: 50px 0;
+}
+.input-field input {
+    color: black;
+    background-color: #D9D9D9;
+    font-size: 20px;
+    padding: 8px 20px;
+    border-radius: 10px;
+}
+.input-field input:not(:last-child) {
+    margin-bottom: 20px;
+}
+.input-field input:focus {
+    outline: none !important;
+    border: 3px solid #0FA958;
+}
+::placeholder {
+    font-weight: bold;
+}
+.btn {
+    padding: 0 50px;
+}
+.submit-btn {
+    width: 100%;
+    background-color: #FFC700;
+    font-size: 20px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: 200ms ease-in-out;
+}
+.submit-btn:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+}
+.login {
+    margin: 0 auto;
+    margin-top: 20px;
+    font-weight: bold;
+}
+.login a {
+    color: #FFC700;
+}
+.login a:hover {
+    cursor: pointer;
+    color: white;
+}
+
+/*RESPONSIVENESS*/
+@media only screen and (max-width: 600px) {
+    .content {
+        height: 100%;
+        width: 100%;
+        border-radius: none;
+    }
+    .input-field {
+        padding: 0;
+    }
+}

@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: rgba(0, 0, 0, 0.8);
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+.content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 80%;
+    display: flex;
+    background-color: #232323;
+    border-radius: 20px;
+}
+.container-1 img {
+    border-radius: 20px;
+    width: 550px;
+    height: 100%;
+}
+.container-2 {
+    width: 100%;
+    padding: 50px;
+}
+h1 {
+    text-transform: uppercase;
+}
+.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+    display: none;
+}
+.error.active {
+    display: block;
+}
+.input-field {
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px;
+    margin: 100px 0;
+}
+.input-field input {
+    color: black;
+    background-color: #D9D9D9;
+    font-size: 20px;
+    padding: 8px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.input-field input.last {
+    margin-bottom: 0;
+}
+.input-field input:focus {
+    outline: none !important;
+    border: 3px solid #0FA958;
+}
+::placeholder {
+    font-weight: bold;
+}
+.btn {
+    padding: 0 50px;
+}
+.submit-btn {
+    width: 100%;
+    background-color: #FFC700;
+    font-size: 20px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: 200ms ease-in-out;
+}
+.submit-btn:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+}
+.register {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+.register a {
+    color: #FFC700;
+}
+.register a:hover {
+    cursor: pointer;
+    color: white;
+}
+
+/*RESPONSIVENESS*/
+@media only screen and (max-width: 1400px) {
+    .container-1 {
+        display: none;
+    }
+    .content {
+        width: 550px;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .content {
+        height: 100%;
+        width: 100%;
+        border-radius: none;
+    }
+    .input-field {
+        padding: 0;
+    }
+}

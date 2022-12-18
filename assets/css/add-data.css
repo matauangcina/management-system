@@ -1,0 +1,305 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: rgba(0, 0, 0, 0.8);
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+header {
+    background-color: #232323;
+    padding: 15px 40px;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.dropdown {
+    position: relative;
+}
+.dropdown-menu {
+    width: 100px;
+    position: absolute;
+    right: 0;
+    top: calc(100% + .25rem);
+    background-color: rgb(100, 98, 98);
+    border-radius: .25rem;
+    padding: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+.dropdown-menu a {
+    padding: 5px 8px;
+    display: block;
+    font-size: 12px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background-color: transparent;
+}
+.dropdown-menu a:hover {
+    background-color: rgb(124, 124, 124);
+}
+.dropdown.active > .link + .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.link {
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border: none;
+    border-radius: 20px;
+    background-color: #333333;
+    cursor: pointer;
+}
+.link p {
+    font-size: 15px;
+}
+.link i {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 10px;
+}
+.content {
+    display: flex;
+    height: 90vh;
+}
+#menu {
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 100;
+    display: none;
+}
+.navbar {
+    background-color: #232323;
+    width: 20%;
+    height: 100%;
+}
+.navbar ul {
+    list-style-type: none;
+}
+.navbar ul li {
+    padding: 15px;
+}
+.navbar ul li:hover, .navbar ul li.active {
+    cursor: pointer;
+    background-color: black;
+}
+.navbar ul li i {
+    margin-right: 10px;
+}
+.navbar a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+}
+.wrapper {
+    padding: 50px;
+    width: 100%;
+}
+.fill {
+    height: 100%;
+    padding-right: 15px;
+    overflow-y: scroll;
+}
+.fill::-webkit-scrollbar {
+    width: 10px;
+}
+.fill::-webkit-scrollbar-track {
+    background: black;
+}
+.fill::-webkit-scrollbar-thumb{
+    background: #FFC700;
+}
+.content-1 {
+    height: 25%;
+}
+.border {
+    height: 3px;
+    width: 100%;
+    margin: 20px 0;
+    background-color: #232323;
+}
+.title {
+    padding: 10px;
+    background-color: #232323;
+    margin: 20px 0;
+}
+.title i {
+    margin-right: 10px;
+}
+.content-1 a {
+    padding: 5px 10px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #FFC700;
+    border: none;
+    transition: 200ms ease-in-out;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.table {
+    height: 65%;
+    font-size: 18px;
+}
+.row {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+.column.first {
+    font-weight: bold;
+    width: 35%;
+}
+.column.second {
+    width: 5%;
+}
+.column.third {
+    width: 60%;
+}
+.column.third input, .column.third select {
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 15px;
+    width: 100%;
+}
+.column.third input:focus, .column.third select:focus {
+    outline: none !important;
+    border: 3px solid #0FA958;
+}
+.preview img {
+    width: 200px;
+    height: 200px;
+}
+.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 35px;
+    display: none;
+}
+.error.active {
+    display: block;
+}
+.button {
+    margin-top: 10%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button button {
+    height: 50%;
+    width: 10%;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    color: white;
+    transition: 200ms ease-in-out;
+    cursor: pointer;
+}
+.button button:not(:last-child) {
+    margin-right: 10px;
+}
+.button .submit {
+    background-color: green;
+}
+.button .back {
+    background-color: red;
+}
+.button button:hover {
+    transform: scale(1.05);
+}
+
+/*RESPONSIVENESS*/
+@media only screen and (max-width: 1250px) {
+    header {
+        position: relative;
+        z-index: 10;
+    }
+    .content {
+        display: block;
+        height: fit-content;
+    }
+    .navbar {
+        position: sticky;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        background-color: #232323;
+        padding: 5px 40px;
+        height: 10%;
+        width: 100%;
+    }
+    .navbar.active {
+        background-color: black;
+    }
+    #menu {
+        display: initial;
+    }
+    .navbar ul {
+        position: absolute;
+        top: -5000px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        background-color: black;
+        row-gap: 0.5rem;
+        padding: 20px;
+        transition: 200ms all linear;
+    }
+    .navbar a {
+        text-align: center;
+    }
+    .navbar a:hover {
+        color: #A46F48;
+    }
+    .navbar a::after {
+        display: none;
+    }
+    .navbar ul.active {
+        top: 100%;
+    }
+    .fill {
+        overflow-y: hidden;
+    }
+}
+@media only screen and (max-width: 755px) {
+    header h1 {
+        font-size: 13px;
+    }
+    .dropdown p, .column, .column.third input {
+        font-size: 12px;
+    }
+    #menu {
+        font-size: 35px;
+    }
+    .navbar ul {
+        padding: 10px;
+        row-gap: 0;
+    }
+    .navbar a {
+        font-size: 12px;
+        padding: 0;
+    }
+    .fill h1 {
+        font-size: 25px;
+    }
+    .button button {
+        width: 100px;
+    }
+}
