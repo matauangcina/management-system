@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if ( isset($_SESSION['auth']) ) {
+    if ( $_SESSION['auth'] === true ) {
+        header('Location: ./item-list.php');
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -24,7 +34,11 @@
                 <div class="input-field">
                     <input type="email" placeholder="Email" id="email" name="email" required>
                     <input class="last" type="password" placeholder="Password" id="password" name="password" required>
-                    <div class="error"></div>
+
+                    <?php if ( isset($_SESSION['error_msg']) ) : ?>
+                        <div class="error"><?= $_SESSION['error_msg']; ?></div>
+                        <?php unset($_SESSION['error_msg']); ?>
+                    <?php endif; ?>
                 </div>
                 
                 <div class="btn">

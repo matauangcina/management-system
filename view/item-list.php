@@ -24,7 +24,7 @@
         <div class="dropdown">
             <button class="valid link"><i class='valid bx bxs-user'></i><p class="valid">Administrator</p><i class='valid bx bxs-down-arrow'></i></button>
             <div class="dropdown-menu">
-                <a href="login.html">Log out</a>
+                <a href="../controller/logout.php">Log out</a>
             </div>
         </div>
     </header>

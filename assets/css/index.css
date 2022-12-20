@@ -9,18 +9,24 @@ body {
     color: white;
 }
 .content {
-    padding: 50px;
-    width: 600px;
-    height: 95%;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: 75%;
+    height: 80%;
+    display: flex;
     background-color: #232323;
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+}
+.container-1 img {
+    border-radius: 20px;
+    width: 550px;
+    height: 100%;
+}
+.container-2 {
+    width: 100%;
+    padding: 50px;
 }
 h1 {
     text-transform: uppercase;
@@ -28,14 +34,13 @@ h1 {
 .error {
     color: red;
     font-weight: bold;
-    text-align: center;
     margin-top: 20px;
 }
 .input-field {
     display: flex;
     flex-direction: column;
-    padding: 0 50px;
-    margin: 50px 0;
+    padding: 0 30px;
+    margin: 100px 0;
 }
 .input-field input {
     color: black;
@@ -43,9 +48,10 @@ h1 {
     font-size: 20px;
     padding: 8px 20px;
     border-radius: 10px;
-}
-.input-field input:not(:last-child) {
     margin-bottom: 20px;
+}
+.input-field input.last {
+    margin-bottom: 0;
 }
 .input-field input:focus {
     outline: none !important;
@@ -71,21 +77,29 @@ h1 {
     cursor: pointer;
     transform: scale(1.02);
 }
-.login {
-    margin: 0 auto;
+.register {
+    text-align: center;
     margin-top: 20px;
     font-weight: bold;
 }
-.login a {
+.register a {
     color: #FFC700;
 }
-.login a:hover {
+.register a:hover {
     cursor: pointer;
     color: white;
 }
 
 /*RESPONSIVENESS*/
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1400px) {
+    .container-1 {
+        display: none;
+    }
+    .content {
+        width: 550px;
+    }
+}
+@media only screen and (max-width: 550px) {
     .content {
         height: 100%;
         width: 100%;
