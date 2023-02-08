@@ -1,6 +1,6 @@
 <?php
 require_once('../controller/db_connect.php');
-require_once('../config/rand_id.php');
+require_once('../config/utilities.php');
 require_once('../config/check_validity.php');
 
 if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
@@ -11,14 +11,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
     $pass = $_POST['password'];
     $conf = $_POST['pass-conf'];
 
-    $error_msg = [
-        'username' => '',
-        'phone_num' => '',
-        'dob' => '',
-        'email' => '',
-        'pass' => '',
-        'conf' => ''
-    ];
+    $error_msg = [];
 
     $isValid = 1;    
 
@@ -30,7 +23,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
         $error_msg['phone_num'] = 'Invalid phone number!';
         $isValid = 0;
     }
-    if ( !checkBirthDate($birth_date) ) {
+    if ( !checkDOB($birth_date) ) {
         $error_msg['dob'] = 'Invalid birth date (must be at least 18 years old)!';
         $isValid = 0;
     }
@@ -52,7 +45,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
                 (?, ?, ?, ?, ?, ?);
             ");
             
-            $stmt->bind_param('ssssss', generateUserId(), $name, $phone_num, $birth_date, $email, $pass);
+            $stmt->bind_param('ssssss', generateId('user'), $name, $phone_num, $birth_date, $email, encrypt($pass));
             
             $stmt->execute();
             
@@ -115,7 +108,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 
                 <input type="password" placeholder="Password" id="password" name="password" required>
 
-                <?php if ( isset($error_msg['conf'])) : ?>
+                <?php if ( isset($error_msg['conf']) ) : ?>
                     <div class="error"><?= $error_msg['conf']; ?></div>
                 <?php endif; ?>
 

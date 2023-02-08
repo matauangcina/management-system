@@ -1,3 +1,20 @@
+<?php
+require_once('../controller/session_manager.php');
+
+$stat = validateSession();
+
+if ( !$stat ) {
+    destroyCookie();
+    destroySession();
+    ?>
+        <script>
+            alert('Session is invalid or has expired! Please re-login!');
+            window.location.replace('./index.php');
+        </script>
+    <?php
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,15 +31,15 @@
     <script src="../assets/js/management.js" defer></script>
     <script src="../assets/js/menu.js" defer></script>
 
-    <title>Purchase Management</title>
+    <title>Item Management</title>
 </head>
 
 <body>
     <header>
-        <h1>UAS - Web Based Application Development (Aplikasi Pembelian)</h1>
+        <h1>Management System</h1>
 
         <div class="dropdown">
-            <button class="valid link"><i class='valid bx bxs-user'></i><p class="valid">Administrator</p><i class='valid bx bxs-down-arrow'></i></button>
+            <button class="valid link"><i class='valid bx bxs-user'></i><p class="valid"><?= $_SESSION['name']; ?></p><i class='valid bx bxs-down-arrow'></i></button>
             <div class="dropdown-menu">
                 <a href="../controller/logout.php">Log out</a>
             </div>
@@ -35,7 +52,7 @@
             <ul>
                 <a href="home.html"><li class="home"><i class='bx bxs-home'></i>Home</li></a>
                 <a href="user.html"><li class="user"><i class='bx bxs-user-circle'></i>User Management</li></a>
-                <a href="#"><li class="purchase active"><i class='bx bxs-shopping-bag'></i>Purchase Management</li></a>
+                <a href="#"><li class="purchase active"><i class='bx bxs-shopping-bag'></i>Item Management</li></a>
                 <a href="#"><li class="vendor"><i class='bx bxs-package' ></i>Vendor Information</li></a>
                 <a href="#"><li class="article"><i class='bx bx-paperclip' ></i>Article</li></a>
                 <a href="#"><li class="soon"><i class='bx bxs-time' ></i>Coming Soon</li></a>
@@ -44,12 +61,12 @@
         <div class="wrapper">
             <div class="fill">
                 <div class="content-1">
-                    <h1>Purchase Management</h1>
+                    <h1>Item Management</h1>
                     <div class="border"></div>
         
                     <div class="title"><i class='bx bxs-shopping-bag'></i>Items</div>
         
-                    <a href="add-item.html"><i class='bx bx-plus'></i>Add New Data</a>
+                    <a href="./add-item.php"><i class='bx bx-plus'></i>Add New Data</a>
         
                     <div class="search-bar">
                         <label for="search">Search: </label>
@@ -67,7 +84,9 @@
                         <div class="column date">Date Created<button class="sort"><i class='bx bxs-up-arrow'></i><i class='bx bxs-down-arrow'></i></div>
                         <div class="column action">Action</div>
                     </div>
-                    <div class="body"></div>
+                    <div class="body">
+
+                    </div>
                 </div>
             </div>
         </div>

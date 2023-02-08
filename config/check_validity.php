@@ -1,5 +1,4 @@
 <?php
-
 function checkUsername($username) {
     $flag = 1;
 
@@ -20,7 +19,7 @@ function checkPhoneNum($phone_num) {
     return $flag;
 }
 
-function checkBirthDate($date) {
+function checkDOB($date) {
     $flag = 1;
 
     $birth_date = time() - strtotime($date);
@@ -53,4 +52,35 @@ function checkPassword($password) {
         $flag = 0;
 
     return $flag;
+}
+
+function checkImage($file) {
+    $file_name = $file['name'];
+    $file_size = $file['size'];
+    $error = $file['error'];
+
+    $file_extension = end(explode('.', $file_name));
+
+    $max_file_size = 1024 * 1024 * 25;
+    $valid_extension = ['jpeg', 'jpg', 'gif', 'png'];
+    $valid_name = '/^[A-Za-z0-9_- ]+$/i';
+
+    if ( $error == 4 ) {
+        $_SESSION['error_msg']['image'] = 'There is no image!, Please insert an image for this item!';
+        return false;
+    }
+    if ( !preg_match($valid_name, $file_name) ) {
+        $_SESSION['error_msg']['image'] = 'File name must only contain characters, numbers, dashes, underscores, and spaces!';
+        return false;
+    }
+    if ( !in_array($file_extension, $valid_extension) ) {
+        $_SESSION['error_msg']['image'] = 'Image is invalid! Uploaded file must be a .jpg, .jpeg, .png, or .gif!';
+        return false;
+    }
+    if ( $file_size > $max_file_size ) {
+        $_SESSION['error_msg']['image'] = 'Image uploaded size limit is 25 MB!';
+        return false;
+    }
+
+    return $file_name;
 }

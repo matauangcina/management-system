@@ -1,6 +1,8 @@
 <?php
+require_once('./session_manager.php');
 
-session_start();
-session_unset();
-session_destroy();
+destroyCookie();
+
+destroySession();
+
 header('Location: ../view/index.php');

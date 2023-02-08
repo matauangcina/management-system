@@ -1,5 +1,13 @@
 <?php
-session_start();
+require_once('../controller/session_manager.php');
+
+if ( isset($_COOKIE['token']) ) {
+    $key = getCookie($conn, $_SESSION['user_id']);
+
+    if ( $key !== $_COOKIE['token'] ) {
+        $_SESSION['auth'] = true;
+    }
+}
 
 if ( isset($_SESSION['auth']) ) {
     if ( $_SESSION['auth'] === true ) {
@@ -35,9 +43,14 @@ if ( isset($_SESSION['auth']) ) {
                     <input type="email" placeholder="Email" id="email" name="email" required>
                     <input class="last" type="password" placeholder="Password" id="password" name="password" required>
 
+                    <label for="remember-me" id="remember">
+                        <input type="checkbox" id="remember-me" name="remember-me" />
+                        Remember Me
+                    </label>
+
                     <?php if ( isset($_SESSION['error_msg']) ) : ?>
                         <div class="error"><?= $_SESSION['error_msg']; ?></div>
-                        <?php unset($_SESSION['error_msg']); ?>
+                        <?php destroySession(); ?>
                     <?php endif; ?>
                 </div>
                 
